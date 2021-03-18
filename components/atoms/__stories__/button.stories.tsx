@@ -1,6 +1,5 @@
 import { Story } from '@storybook/react'
 import { Button, ButtonPropType } from '../button'
-import { colors } from '~/styles/color'
 
 export default {
   title: 'atoms/Button',
