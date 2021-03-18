@@ -3,25 +3,32 @@ import { BaseColor, BackgroundColor, colors } from '~/styles/color'
 
 const DEFAULT_BACKGROUND_COLOR: BackgroundColor = 'accent'
 const DEFAULT_TEXT_COLOR: BaseColor = 'white'
+const DEFAULT_BUTTON_HEIGHT = '36px'
 
 export type ButtonPropType = {
   backgroundColor?: BackgroundColor
   textColor?: BaseColor
+  className?: string
   onClick: () => void
   children: JSX.Element
+  height?: string
 }
 
 export const Button: React.VFC<ButtonPropType> = ({
   backgroundColor,
   textColor,
+  className,
   onClick,
   children,
+  height,
 }) => {
   return (
     <ButtonContainer
       backgroundColor={backgroundColor}
       onClick={onClick}
       textColor={textColor}
+      className={className}
+      height={height ?? DEFAULT_BUTTON_HEIGHT}
     >
       {children}
     </ButtonContainer>
@@ -31,6 +38,7 @@ export const Button: React.VFC<ButtonPropType> = ({
 const ButtonContainer = styled.button<{
   backgroundColor?: BackgroundColor
   textColor?: BaseColor
+  height: string
 }>((props) => ({
   cursor: 'pointer',
   display: 'flex',
@@ -41,7 +49,7 @@ const ButtonContainer = styled.button<{
   borderRadius: '4px',
   border: 'none',
   color: colors.base[props.textColor ?? DEFAULT_TEXT_COLOR],
-  height: '36px',
+  height: props.height,
   width: '100%',
   boxSizing: 'border-box',
   fontSize: '16px',
