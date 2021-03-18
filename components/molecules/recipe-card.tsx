@@ -35,8 +35,6 @@ export const RecipeCard: React.VFC<RecipeCardPropType> = ({
 
 const Container = styled.div({
   display: 'flex',
-  borderRadius: '6px',
-  border: `1px solid ${colors.border.cardOutline}`,
   backgroundColor: colors.background.primary,
 })
 
