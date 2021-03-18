@@ -63,7 +63,7 @@ const commonStyle = (props: { backgroundColorType: BackgroundColor }) => ({
   color: colors.text.primary,
   fontsize: '14px',
   borderRadius: '4px',
-  padding: '16px',
+  padding: '8px',
   '::placeholder': {
     color: colors.text.gray,
     fontSize: '14px',

@@ -28,7 +28,8 @@
     "@emotion/core": "^10",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^10",
-    "emotion-reset": "^3.0.0"
+    "emotion-reset": "^3.0.0",
+    "dayjs": "^1.10.4"
   },
   "devDependencies": {
     "@types/node": "^14.14.35",
