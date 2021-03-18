@@ -1,24 +1,46 @@
 import styled from '@emotion/styled'
-import { colors } from '~/styles/color'
+import { BaseColor, BackgroundColor, colors } from '~/styles/color'
+
+const DEFAULT_BACKGROUND_COLOR: BackgroundColor = 'accent'
+const DEFAULT_TEXT_COLOR: BaseColor = 'white'
 
 export type ButtonPropType = {
+  backgroundColor?: BackgroundColor
+  textColor?: BaseColor
   onClick: () => void
   innerText: string
 }
 
-export const Button: React.VFC<ButtonPropType> = ({ onClick, innerText }) => {
-  return <ButtonContainer onClick={onClick}>{innerText}</ButtonContainer>
+export const Button: React.VFC<ButtonPropType> = ({
+  backgroundColor,
+  textColor,
+  onClick,
+  innerText,
+}) => {
+  return (
+    <ButtonContainer
+      backgroundColor={backgroundColor}
+      onClick={onClick}
+      textColor={textColor}
+    >
+      {innerText}
+    </ButtonContainer>
+  )
 }
 
-const ButtonContainer = styled.button<{}>(() => ({
+const ButtonContainer = styled.button<{
+  backgroundColor?: BackgroundColor
+  textColor?: BaseColor
+}>((props) => ({
   cursor: 'pointer',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: colors.background.accent,
+  backgroundColor:
+    colors.background[props.backgroundColor ?? DEFAULT_BACKGROUND_COLOR],
   borderRadius: '4px',
   border: 'none',
-  color: colors.base.white,
+  color: colors.base[props.textColor ?? DEFAULT_TEXT_COLOR],
   height: '36px',
   width: '100%',
   boxSizing: 'border-box',
