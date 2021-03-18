@@ -8,14 +8,14 @@ export type ButtonPropType = {
   backgroundColor?: BackgroundColor
   textColor?: BaseColor
   onClick: () => void
-  innerText: string
+  children: JSX.Element
 }
 
 export const Button: React.VFC<ButtonPropType> = ({
   backgroundColor,
   textColor,
   onClick,
-  innerText,
+  children,
 }) => {
   return (
     <ButtonContainer
@@ -23,7 +23,7 @@ export const Button: React.VFC<ButtonPropType> = ({
       onClick={onClick}
       textColor={textColor}
     >
-      {innerText}
+      {children}
     </ButtonContainer>
   )
 }
