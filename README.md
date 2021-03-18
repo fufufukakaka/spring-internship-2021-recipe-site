@@ -34,3 +34,9 @@ $ npx next dev
 http://localhost:3000/ を開いて `Hello Next!` が表示されていることを確認します。
 
 簡単でしたね。
+
+## Storybook
+
+`yarn run build-storybook && yarn run storybook`
+
+
