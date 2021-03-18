@@ -9,7 +9,7 @@ export type StepContainerPropType = {
 export const StepContainer: React.VFC<StepContainerPropType> = ({ steps }) => {
   return (
     <Container>
-      <Header headerText="手順" colorType="light" textType="14bold" />
+      <Header headerText="手順" colorType="light" textType="16bold" />
       {steps.map((step, index) => (
         <Steps key={index} stepNumber={index} stepText={step} />
       ))}

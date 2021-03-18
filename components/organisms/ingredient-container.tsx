@@ -15,7 +15,7 @@ export const IngredientContainer: React.VFC<IngredientContainerPropType> = ({
 }) => {
   return (
     <Container>
-      <Header headerText="材料" colorType="light" textType="14bold" />
+      <Header headerText="材料" colorType="light" textType="16bold" />
       {ingredientsInfo.map((info, index) => (
         <>
           <Ingredients

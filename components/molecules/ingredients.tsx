@@ -32,12 +32,12 @@ const Container = styled.div({
 
 const IngredientName = styled.div({
   width: '50%',
-  padding: '10px',
+  padding: '20px',
   textAlign: 'left',
 })
 
 const Ingredientunit = styled.div({
   width: '50%',
-  padding: '10px',
+  padding: '20px',
   textAlign: 'right',
 })

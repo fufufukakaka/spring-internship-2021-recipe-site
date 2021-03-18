@@ -38,10 +38,10 @@ const HeaderContainer = styled.header<{ colorType: HeaderColorType }>(
       props.colorType === 'dark'
         ? colors.background.dark
         : colors.background.primary,
-    height: '80px',
+    padding: '20px',
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'left',
+    alignItems: 'left',
     borderBottom: `2px solid ${colors.border.gray}`,
   })
 )
