@@ -29,6 +29,10 @@ export const colors = {
     gray: '#989483',
     green: '#97AF10',
   },
+  border: {
+    gray: '#00000019',
+    cardOutline: '#2E203433',
+  },
 }
 
 export type BaseColor = keyof typeof colors.base
