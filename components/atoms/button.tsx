@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { colors } from '~/styles/color'
 
 export type ButtonPropType = {
   onClick: () => void
@@ -14,10 +15,10 @@ const ButtonContainer = styled.button<{}>(() => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#F78700',
+  backgroundColor: colors.background.accent,
   borderRadius: '4px',
   border: 'none',
-  color: '#ffffff',
+  color: colors.base.white,
   height: '36px',
   width: '100%',
   boxSizing: 'border-box',
