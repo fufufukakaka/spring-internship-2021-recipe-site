@@ -6,13 +6,13 @@ export default {
   component: SearchBar,
   argTypes: {
     onChange: { action: 'onChange' },
-    onClickAnswer: { action: 'onClickAnswer' },
+    onClickSearch: { action: 'onClickSearch' },
   },
 }
 
 const Template: Story<SearchBarPropType> = (args) => <SearchBar {...args} />
 
-const args: Omit<SearchBarPropType, 'onChange' | 'onClickAnswer'> = {
+const args: Omit<SearchBarPropType, 'onChange' | 'onClickSearch'> = {
   value: '',
 }
 

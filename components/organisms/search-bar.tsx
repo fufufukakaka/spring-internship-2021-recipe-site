@@ -5,13 +5,13 @@ import { TextInput } from '~/components/atoms/text-input'
 export type SearchBarPropType = {
   value: string
   onChange: (text: string) => void
-  onClickAnswer: () => void
+  onClickSearch: () => void
 }
 
 export const SearchBar: React.VFC<SearchBarPropType> = ({
   value,
   onChange,
-  onClickAnswer,
+  onClickSearch,
 }) => {
   return (
     <Container>
@@ -19,7 +19,7 @@ export const SearchBar: React.VFC<SearchBarPropType> = ({
         iconType="search"
         iconColor="primary"
         backgroundColor="primary"
-        onClick={onClickAnswer}
+        onClick={onClickSearch}
         iconHeight="30px"
       />
       <SearchTextField
