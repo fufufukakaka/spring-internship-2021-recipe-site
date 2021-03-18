@@ -21,6 +21,7 @@ export const colors = {
   background: {
     primary: '#FAFAF5',
     accent: '#F78700',
+    dark: '#424031',
   },
   icon: {
     primary: '#1C1A10',

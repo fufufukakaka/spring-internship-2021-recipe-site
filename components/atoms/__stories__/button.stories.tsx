@@ -14,19 +14,19 @@ const Template: Story<ButtonPropType> = (args) => <Button {...args} />
 const args: Omit<ButtonPropType, 'onClick'> = {
   backgroundColor: 'accent',
   textColor: 'white',
-  innerText: 'テキスト',
+  children: <p>テキスト</p>,
 }
 
 export const AddtoMyFolder = Template.bind({})
 AddtoMyFolder.args = {
   ...args,
-  innerText: 'マイフォルダに追加',
+  children: <p>マイフォルダに追加</p>,
 }
 
 export const DeleteFromMyFolder = Template.bind({})
 DeleteFromMyFolder.args = {
   ...args,
-  innerText: 'マイフォルダから削除',
+  children: <p>マイフォルダから削除</p>,
 }
 
 export const ForwardPage = Template.bind({})
@@ -34,7 +34,7 @@ ForwardPage.args = {
   ...args,
   backgroundColor: 'primary',
   textColor: 'primary',
-  innerText: '次のページ',
+  children: <p>次のページ</p>,
 }
 
 export const BackwardPage = Template.bind({})
@@ -42,5 +42,5 @@ BackwardPage.args = {
   ...args,
   backgroundColor: 'primary',
   textColor: 'primary',
-  innerText: '前のページ',
+  children: <p>前のページ</p>,
 }
