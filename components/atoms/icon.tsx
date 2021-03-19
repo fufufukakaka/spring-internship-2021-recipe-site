@@ -4,7 +4,7 @@ import { IconColor, colors } from '~/styles/color'
 const DEFAULT_COLOR: IconColor = 'primary'
 const DEFUALT_HEIGHT = '30px'
 
-export type IconType = 'search'
+export type IconType = 'search' | 'noImage'
 
 export type IconPropType = {
   type: IconType
@@ -16,6 +16,7 @@ export type IconPropType = {
 
 const iconNameMap: { [key in IconType]: string } = {
   search: 'search.svg',
+  noImage: 'noImage.svg',
 }
 
 export const Icon: React.VFC<IconPropType> = ({

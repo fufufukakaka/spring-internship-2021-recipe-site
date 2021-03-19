@@ -2,9 +2,10 @@ import styled from '@emotion/styled'
 import { colors } from '~/styles/color'
 import { Image } from '../atoms/image'
 import { Typography } from '../atoms/typography'
+import { Icon } from '~/components/atoms/icon'
 
 export type RecipeCardPropType = {
-  imgUrl: string
+  imgUrl: string | null
   recipeTitle: string
   recipeDescription: string
   className?: string
@@ -19,7 +20,11 @@ export const RecipeCard: React.VFC<RecipeCardPropType> = ({
   return (
     <Container className={className}>
       <SideImage>
-        <Image imgUrl={imgUrl} />
+        {imgUrl ? (
+          <Image imgUrl={imgUrl} />
+        ) : (
+          <Icon type="noImage" height="100px" />
+        )}
       </SideImage>
       <SideText>
         <RecipeTitle>

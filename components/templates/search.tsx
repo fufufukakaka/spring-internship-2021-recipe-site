@@ -7,13 +7,10 @@ import { RecipeCard } from '~/components/molecules/recipe-card'
 import { Divider } from '../atoms/divider'
 import { Button } from '../atoms/button'
 import { Typography } from '../atoms/typography'
+import { Recipe } from '~/lib/get_recipe_list'
 
 export type SearchPropType = {
-  recipeInfo: {
-    imgUrl: string
-    recipeTitle: string
-    recipeDescription: string
-  }[]
+  recipeInfo: Recipe[]
   searchValue: string
   onChangeSearch: (text: string) => void
   onClickSearch: () => void
@@ -45,9 +42,9 @@ export const Search: React.VFC<SearchPropType> = ({
         <>
           <RecipeCard
             key={index}
-            imgUrl={item.imgUrl}
-            recipeTitle={item.recipeTitle}
-            recipeDescription={item.recipeDescription}
+            imgUrl={item.imageUrl}
+            recipeTitle={item.title}
+            recipeDescription={item.description}
           />
           <Divider />
         </>
