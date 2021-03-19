@@ -5,15 +5,17 @@ import { RecipeType } from '~/lib/get_recipe_list'
 import { getRecipe } from '~/lib/get_recipe'
 
 export type RecipePagePropType = {
-  recipeInfo: RecipeType
+  recipe: RecipeType
 }
 
-const RecipePage: NextPage<RecipePagePropType> = ({ recipeInfo }) => {
-  if (recipeInfo === null) return <div>loading...</div>
+const RecipePage: NextPage<RecipePagePropType> = (props) => {
+  const { recipe } = props
+
+  if (recipe === null) return <div>loading...</div>
 
   return (
     <Recipe
-      recipeInfo={recipeInfo}
+      recipeInfo={recipe}
       searchValue=""
       onChangeSearch={() => console.log('search')}
       onClickSearch={() => console.log('search')}
