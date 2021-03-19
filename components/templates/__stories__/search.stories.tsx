@@ -21,36 +21,36 @@ const args: Omit<
   recipeInfo: [
     {
       id: 1,
-      author: { userName: 'fufufukakaka' },
-      publishedAt: '2020-01-01 00:00:00',
+      author: { user_name: 'fufufukakaka' },
+      published_at: '2020-01-01 00:00:00',
       steps: [''],
       ingredients: [{ name: 'hoge', quantity: 'fuga' }],
-      relatedRecipes: [1],
-      imageUrl:
+      related_recipes: [1],
+      image_url:
         'http://img.cpcdn.com/recipes/6690847/1280x720c/36926b27cabace7c00c57430c3588fc5.jpg',
       title: 'お好み焼き',
       description: '大好物です',
     },
     {
       id: 2,
-      author: { userName: 'fufufukakaka' },
-      publishedAt: '2020-01-01 00:00:00',
+      author: { user_name: 'fufufukakaka' },
+      published_at: '2020-01-01 00:00:00',
       steps: [''],
       ingredients: [{ name: 'hoge', quantity: 'fuga' }],
-      relatedRecipes: [1],
-      imageUrl:
+      related_recipes: [1],
+      image_url:
         'http://img.cpcdn.com/recipes/6690847/1280x720c/36926b27cabace7c00c57430c3588fc5.jpg',
       title: 'お好み焼き',
       description: '大好物です',
     },
     {
       id: 3,
-      author: { userName: 'fufufukakaka' },
-      publishedAt: '2020-01-01 00:00:00',
+      author: { user_name: 'fufufukakaka' },
+      published_at: '2020-01-01 00:00:00',
       steps: [''],
       ingredients: [{ name: 'hoge', quantity: 'fuga' }],
-      relatedRecipes: [1],
-      imageUrl:
+      related_recipes: [1],
+      image_url:
         'http://img.cpcdn.com/recipes/6690847/1280x720c/36926b27cabace7c00c57430c3588fc5.jpg',
       title: 'お好み焼き',
       description: '大好物です',

@@ -46,6 +46,9 @@ const Container = styled.div({
 
 const SideImage = styled.div({
   width: '40%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 })
 
 const SideText = styled.div({

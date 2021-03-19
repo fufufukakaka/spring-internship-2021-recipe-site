@@ -42,7 +42,7 @@ export const Search: React.VFC<SearchPropType> = ({
         <>
           <RecipeCard
             key={index}
-            imgUrl={item.imageUrl}
+            imgUrl={item.image_url}
             recipeTitle={item.title}
             recipeDescription={item.description}
           />

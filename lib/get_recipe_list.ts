@@ -6,13 +6,13 @@ export type Recipe = {
   // レシピ概要
   description: string
   // レシピ画像。画像がない場合は null。
-  imageUrl: string | null
+  image_url: string | null
   // レシピ作者
   author: {
-    userName: string
+    user_name: string
   }
   // レシピを公開した日時。ISO 8601
-  publishedAt: string
+  published_at: string
   // レシピの手順
   steps: string[]
   // レシピの材料
@@ -24,7 +24,7 @@ export type Recipe = {
   }[]
   // 関連するレシピのIDが最大5つ入っている。Poster View などを実装するのに使う。
   // なお、関連レシピの算出アルゴリズムのできが悪いため関連性が低い可能性がある点に注意。
-  relatedRecipes: number[]
+  related_recipes: number[]
 }
 
 export type PagingLinks = {

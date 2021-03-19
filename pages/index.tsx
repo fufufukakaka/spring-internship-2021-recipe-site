@@ -19,6 +19,7 @@ const TopPage: React.VFC = () => {
       const response = await getRecipeList(pagingLink.next)
       setRecipe(response.recipes)
       setPagingLink(response.links)
+      window.scrollTo(0, 0)
     } else {
       return null
     }
@@ -29,6 +30,7 @@ const TopPage: React.VFC = () => {
       const response = await getRecipeList(pagingLink.prev)
       setRecipe(response.recipes)
       setPagingLink(response.links)
+      window.scrollTo(0, 0)
     } else {
       return null
     }
