@@ -8,6 +8,7 @@ import { Divider } from '../atoms/divider'
 import { Button } from '../atoms/button'
 import { Typography } from '../atoms/typography'
 import { RecipeType } from '~/lib/get_recipe_list'
+import Link from 'next/link'
 
 export type SearchPropType = {
   recipeInfo: RecipeType[]
@@ -38,14 +39,18 @@ export const Search: React.VFC<SearchPropType> = ({
         onChange={onChangeSearch}
         onClickSearch={onClickSearch}
       />
-      {recipeInfo.map((item, index) => (
+      {recipeInfo.map((item) => (
         <>
-          <RecipeCard
-            key={index}
-            imgUrl={item.image_url}
-            recipeTitle={item.title}
-            recipeDescription={item.description}
-          />
+          <Link href={`/recipes/${item.id}`}>
+            <LinkContainer>
+              <RecipeCard
+                key={item.id}
+                imgUrl={item.image_url}
+                recipeTitle={item.title}
+                recipeDescription={item.description}
+              />
+            </LinkContainer>
+          </Link>
           <Divider />
         </>
       ))}
@@ -85,3 +90,5 @@ const ButtonContainer = styled.div({
   padding: '10px',
   justifyContent: 'space-between',
 })
+
+const LinkContainer = styled.a({})

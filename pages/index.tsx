@@ -1,9 +1,10 @@
 import React from 'react'
 import { Search } from '~/components/templates/search'
-import { getRecipeList, Recipe, PagingLinks } from '~/lib/get_recipe_list'
+import { getRecipeList, RecipeType, PagingLinks } from '~/lib/get_recipe_list'
+import type { NextPage } from 'next'
 
-const TopPage: React.VFC = () => {
-  const [recipeForList, setRecipe] = React.useState<Recipe[] | null>(null)
+const TopPage: NextPage = () => {
+  const [recipeForList, setRecipe] = React.useState<RecipeType[] | null>(null)
   const [pagingLink, setPagingLink] = React.useState<PagingLinks | null>(null)
 
   React.useEffect(() => {
