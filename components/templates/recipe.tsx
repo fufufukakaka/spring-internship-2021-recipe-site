@@ -1,38 +1,25 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { colors } from '~/styles/color'
 import { SearchBar } from '~/components/organisms/search-bar'
 import { Header } from '../molecules/header'
 import { RecipeSummary } from '~/components/organisms/recipe-summary'
 import { IngredientContainer } from '~/components/organisms/ingredient-container'
 import { StepContainer } from '~/components/organisms/step-container'
+import { RecipeType } from '~/lib/get_recipe_list'
 
 export type RecipePropType = {
-  imgUrl: string
-  recipeTitle: string
-  recipeDescription: string
-  authorName: string
-  createdAt: Date
+  recipeInfo: RecipeType
   searchValue: string
   onChangeSearch: (text: string) => void
   onClickSearch: () => void
-  ingredientsInfo: {
-    ingredientName: string
-    ingredientUnit: string
-  }[]
-  steps: string[]
 }
 
 export const Recipe: React.VFC<RecipePropType> = ({
-  imgUrl,
-  recipeTitle,
-  recipeDescription,
-  authorName,
-  createdAt,
+  recipeInfo,
   searchValue,
   onChangeSearch,
   onClickSearch,
-  ingredientsInfo,
-  steps,
 }) => {
   return (
     <Container>
@@ -47,14 +34,14 @@ export const Recipe: React.VFC<RecipePropType> = ({
         onClickSearch={onClickSearch}
       />
       <RecipeSummary
-        imgUrl={imgUrl}
-        recipeTitle={recipeTitle}
-        recipeDescription={recipeDescription}
-        authorName={authorName}
-        createdAt={createdAt}
+        imgUrl={recipeInfo.image_url}
+        recipeTitle={recipeInfo.title}
+        recipeDescription={recipeInfo.description}
+        authorName={recipeInfo.author.user_name}
+        publishedAt={recipeInfo.published_at}
       />
-      <IngredientContainer ingredientsInfo={ingredientsInfo} />
-      <StepContainer steps={steps} />
+      <IngredientContainer ingredientsInfo={recipeInfo.ingredients} />
+      <StepContainer steps={recipeInfo.steps} />
     </Container>
   )
 }
@@ -63,9 +50,5 @@ const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   flexWrap: 'wrap',
+  backgroundColor: colors.background.primary,
 })
-
-// const SubContainer = styled.div({
-//   display: 'flex',
-//   justifyContent: 'space-between',
-// })

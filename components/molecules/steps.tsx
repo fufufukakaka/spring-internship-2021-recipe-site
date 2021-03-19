@@ -34,4 +34,5 @@ const Container = styled.div({
 const StepText = styled.div({
   width: '100%',
   padding: '20px',
+  boxSizing: 'border-box',
 })

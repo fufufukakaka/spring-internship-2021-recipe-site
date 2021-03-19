@@ -5,8 +5,8 @@ import { Divider } from '../atoms/divider'
 
 export type IngredientContainerPropType = {
   ingredientsInfo: {
-    ingredientName: string
-    ingredientUnit: string
+    name: string
+    quantity: string
   }[]
 }
 
@@ -20,8 +20,8 @@ export const IngredientContainer: React.VFC<IngredientContainerPropType> = ({
         <>
           <Ingredients
             key={index}
-            ingredientName={info.ingredientName}
-            ingredientUnit={info.ingredientUnit}
+            ingredientName={info.name}
+            ingredientUnit={info.quantity}
           />
           <Divider />
         </>
