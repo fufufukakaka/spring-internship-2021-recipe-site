@@ -19,7 +19,7 @@ const args: RecipeSummaryPropType = {
   recipeTitle: 'お好み焼き',
   recipeDescription: '大好物です',
   authorName: 'fufufukakaka',
-  createdAt: new Date('2020-10-10 10:00'),
+  publishedAt: '2010-12-04T22:56:06+09:00',
 }
 
 export const Primary = Template.bind({})

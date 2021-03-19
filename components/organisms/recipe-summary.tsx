@@ -1,14 +1,15 @@
 import styled from '@emotion/styled'
 import { Image } from '../atoms/image'
 import { Typography } from '../atoms/typography'
-import { formatDate } from '~/utils/date'
+import { formatDate } from '~/lib/date'
+import { Icon } from '~/components/atoms/icon'
 
 export type RecipeSummaryPropType = {
-  imgUrl: string
+  imgUrl: string | null
   recipeTitle: string
   recipeDescription: string
   authorName: string
-  createdAt: Date
+  publishedAt: string
 }
 
 export const RecipeSummary: React.VFC<RecipeSummaryPropType> = ({
@@ -16,12 +17,16 @@ export const RecipeSummary: React.VFC<RecipeSummaryPropType> = ({
   recipeTitle,
   recipeDescription,
   authorName,
-  createdAt,
+  publishedAt,
 }) => {
   return (
     <Container>
       <div>
-        <Image imgUrl={imgUrl} />
+        {imgUrl ? (
+          <Image imgUrl={imgUrl} />
+        ) : (
+          <Icon type="noImage" height="100px" />
+        )}
       </div>
       <div>
         <RecipeTitle>
@@ -33,7 +38,7 @@ export const RecipeSummary: React.VFC<RecipeSummaryPropType> = ({
           </AuthorName>
           <CreatedAt>
             <Typography
-              text={formatDate(createdAt, 'YYYY年M月D日 HH:mm:ss')}
+              text={formatDate(publishedAt, 'YYYY年M月D日 HH:mm:ss')}
               type="14normal"
             />
           </CreatedAt>

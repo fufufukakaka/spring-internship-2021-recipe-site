@@ -1,4 +1,17 @@
-export type Recipe = {
+export type StepType = {
+  steps: string[]
+}
+
+export type IngredientsType = {
+  ingredients: {
+    // 材料名
+    name: string
+    // 分量（100g など）
+    quantity: string
+  }[]
+}
+
+export type RecipeType = {
   // レシピID
   id: number
   // レシピ名
@@ -34,7 +47,7 @@ export type PagingLinks = {
 
 export type Response = {
   // レシピ一覧
-  recipes: Recipe[]
+  recipes: RecipeType[]
 
   // ページネーション可能な場合の次、前のページのリンク
   links: PagingLinks

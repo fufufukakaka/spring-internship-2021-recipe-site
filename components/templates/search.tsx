@@ -7,10 +7,10 @@ import { RecipeCard } from '~/components/molecules/recipe-card'
 import { Divider } from '../atoms/divider'
 import { Button } from '../atoms/button'
 import { Typography } from '../atoms/typography'
-import { Recipe } from '~/lib/get_recipe_list'
+import { RecipeType } from '~/lib/get_recipe_list'
 
 export type SearchPropType = {
-  recipeInfo: Recipe[]
+  recipeInfo: RecipeType[]
   searchValue: string
   onChangeSearch: (text: string) => void
   onClickSearch: () => void
