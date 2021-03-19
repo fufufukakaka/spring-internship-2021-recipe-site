@@ -4,11 +4,20 @@ import { Search, SearchPropType } from '~/components/templates/search'
 export default {
   title: 'templates/Search',
   component: Search,
+  argTypes: {
+    onChangeSearch: { action: 'onChangeSearch' },
+    onClickSearch: { action: 'onClickSearch' },
+    onClickNext: { action: 'onClickNext' },
+    onClickPrev: { action: 'onClickPrev' },
+  },
 }
 
 const Template: Story<SearchPropType> = (args) => <Search {...args} />
 
-const args: Omit<SearchPropType, 'onChangeSearch' | 'onClickSearch'> = {
+const args: Omit<
+  SearchPropType,
+  'onChangeSearch' | 'onClickSearch' | 'onClickNext' | 'onClickPrev'
+> = {
   recipeInfo: [
     {
       imgUrl:
@@ -34,3 +43,15 @@ const args: Omit<SearchPropType, 'onChangeSearch' | 'onClickSearch'> = {
 
 export const Primary = Template.bind({})
 Primary.args = args
+
+export const NextOnly = Template.bind({})
+NextOnly.args = {
+  ...args,
+  onClickPrev: undefined,
+}
+
+export const PrevOnly = Template.bind({})
+PrevOnly.args = {
+  ...args,
+  onClickNext: undefined,
+}

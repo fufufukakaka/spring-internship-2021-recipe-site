@@ -4,6 +4,10 @@ import { Recipe, RecipePropType } from '~/components/templates/recipe'
 export default {
   title: 'templates/Recipe',
   component: Recipe,
+  argTypes: {
+    onChangeSearch: { action: 'onChangeSearch' },
+    onClickSearch: { action: 'onClickSearch' },
+  },
 }
 
 const Template: Story<RecipePropType> = (args) => <Recipe {...args} />

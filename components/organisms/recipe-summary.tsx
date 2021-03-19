@@ -58,18 +58,18 @@ const SubContainer = styled.div({
 })
 
 const RecipeTitle = styled.div({
-  padding: '10px',
+  padding: '20px',
   textAlign: 'center',
 })
 
 const RecipeDesc = styled.div({
-  padding: '10px',
+  padding: '20px',
 })
 
 const AuthorName = styled.div({
-  padding: '10px',
+  padding: '20px',
 })
 
 const CreatedAt = styled.div({
-  padding: '10px',
+  padding: '20px',
 })

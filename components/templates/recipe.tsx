@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { colors } from '~/styles/color'
 import { SearchBar } from '~/components/organisms/search-bar'
 import { Header } from '../molecules/header'
 import { RecipeSummary } from '~/components/organisms/recipe-summary'
@@ -63,6 +64,7 @@ const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   flexWrap: 'wrap',
+  backgroundColor: colors.background.primary,
 })
 
 // const SubContainer = styled.div({

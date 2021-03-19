@@ -36,6 +36,7 @@ export const RecipeCard: React.VFC<RecipeCardPropType> = ({
 const Container = styled.div({
   display: 'flex',
   backgroundColor: colors.background.primary,
+  margin: '15px 0 15px 0',
 })
 
 const SideImage = styled.div({
