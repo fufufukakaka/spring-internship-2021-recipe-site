@@ -7,6 +7,7 @@ import type { NextPage } from 'next'
 const TopPage: NextPage = () => {
   const [recipeForList, setRecipe] = React.useState<RecipeType[] | null>(null)
   const [pagingLink, setPagingLink] = React.useState<PagingLinks | null>(null)
+  const [searchWord, setSearchWord] = React.useState<string>('')
 
   React.useEffect(() => {
     ;(async () => {
@@ -38,13 +39,17 @@ const TopPage: NextPage = () => {
     }
   }
 
+  const handleOnChangeSearch = (value: string) => {
+    setSearchWord(value)
+  }
+
   if (recipeForList === null) return <div>loading...</div>
 
   return (
     <Search
       recipeInfo={recipeForList}
-      searchValue=""
-      onChangeSearch={() => console.log('search')}
+      searchValue={searchWord}
+      onChangeSearch={(e) => handleOnChangeSearch(e)}
       onClickSearch={() => console.log('search')}
       onClickNext={handleOnClickNext}
       onClickPrev={handleOnClickPrev}
