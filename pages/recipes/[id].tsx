@@ -1,7 +1,7 @@
 import React from 'react'
 import { Recipe } from '~/components/templates/recipe'
 import type { GetServerSideProps, NextPage } from 'next'
-import { RecipeType } from '~/lib/get_recipe_list'
+import { RecipeType } from '~/types/recipe'
 import { getRecipe } from '~/lib/get_recipe'
 
 export type RecipePagePropType = {

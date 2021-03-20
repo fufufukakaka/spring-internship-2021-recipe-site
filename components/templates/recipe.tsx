@@ -6,7 +6,7 @@ import { Header } from '../molecules/header'
 import { RecipeSummary } from '~/components/organisms/recipe-summary'
 import { IngredientContainer } from '~/components/organisms/ingredient-container'
 import { StepContainer } from '~/components/organisms/step-container'
-import { RecipeType } from '~/lib/get_recipe_list'
+import { RecipeType } from '~/types/recipe'
 
 export type RecipePropType = {
   recipeInfo: RecipeType

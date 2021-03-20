@@ -1,6 +1,7 @@
 import React from 'react'
 import { Search } from '~/components/templates/search'
-import { getRecipeList, RecipeType, PagingLinks } from '~/lib/get_recipe_list'
+import { getRecipeList } from '~/lib/get_recipe_list'
+import { RecipeType, PagingLinks } from '~/types/recipe'
 import type { NextPage } from 'next'
 
 const TopPage: NextPage = () => {

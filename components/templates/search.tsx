@@ -7,7 +7,7 @@ import { RecipeCard } from '~/components/molecules/recipe-card'
 import { Divider } from '../atoms/divider'
 import { Button } from '../atoms/button'
 import { Typography } from '../atoms/typography'
-import { RecipeType } from '~/lib/get_recipe_list'
+import { RecipeType } from '~/types/recipe'
 import Link from 'next/link'
 
 export type SearchPropType = {
