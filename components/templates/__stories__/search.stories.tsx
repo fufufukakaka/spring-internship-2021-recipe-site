@@ -9,6 +9,7 @@ export default {
     onClickSearch: { action: 'onClickSearch' },
     onClickNext: { action: 'onClickNext' },
     onClickPrev: { action: 'onClickPrev' },
+    onClickHeader: { action: 'onClickHeader' },
   },
 }
 
@@ -16,7 +17,11 @@ const Template: Story<SearchPropType> = (args) => <Search {...args} />
 
 const args: Omit<
   SearchPropType,
-  'onChangeSearch' | 'onClickSearch' | 'onClickNext' | 'onClickPrev'
+  | 'onChangeSearch'
+  | 'onClickSearch'
+  | 'onClickNext'
+  | 'onClickPrev'
+  | 'onClickHeader'
 > = {
   recipeInfo: [
     {
@@ -57,6 +62,7 @@ const args: Omit<
     },
   ],
   searchValue: '',
+  isSearchResult: false,
 }
 
 export const Primary = Template.bind({})
