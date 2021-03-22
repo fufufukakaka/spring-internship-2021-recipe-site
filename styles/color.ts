@@ -6,6 +6,7 @@ type ColorType = {
 export const colors = {
   base: {
     primary: '#1C1A10',
+    alphaPrimary: '#1c1a101c',
     white: '#ffffff',
     accent: '#F78700',
     gray: '#989483',

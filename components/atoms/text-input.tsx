@@ -59,15 +59,20 @@ const commonStyle = (props: { backgroundColorType: BackgroundColor }) => ({
   backgroundColor: colors.background[props.backgroundColorType],
   border: 'none',
   outline: 'none',
-  width: '100%',
+  width: '90%',
+  marginRight: '10px',
   color: colors.text.primary,
   fontsize: '14px',
-  borderRadius: '4px',
-  padding: '8px',
+  borderBottom: `1px solid ${colors.base.alphaPrimary}`,
+  padding: '5px',
   '::placeholder': {
     color: colors.text.gray,
     fontSize: '14px',
   },
+  ':focus': {
+    borderBottom: `1px solid ${colors.base.accent}`,
+  },
+  transition: '0.2s all',
 })
 
 const TextAreaElement = styled.textarea<{

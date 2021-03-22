@@ -17,14 +17,14 @@ export const SearchBar: React.VFC<SearchBarPropType> = ({
     <Container>
       <SearchButton
         iconType="search"
-        iconColor="primary"
+        iconColor="accent"
         backgroundColor="primary"
         onClick={onClickSearch}
         iconHeight="30px"
       />
       <SearchTextField
         type="text"
-        placeholder="お好み焼き"
+        placeholder="search your interests..."
         value={value}
         onChange={onChange}
         backgroundColor="primary"
@@ -40,7 +40,6 @@ const Container = styled.div({
 })
 
 const SearchTextField = styled(TextInput)({
-  borderRadius: '4px 0 0 4px',
   height: '48px',
   maxWidth: '582px',
 })
