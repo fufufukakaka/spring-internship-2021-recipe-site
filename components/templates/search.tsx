@@ -13,32 +13,41 @@ import Link from 'next/link'
 export type SearchPropType = {
   recipeInfo: RecipeType[]
   searchValue: string
+  isSearchResult: boolean
   onChangeSearch: (text: string) => void
   onClickSearch: () => void
   onClickNext?: () => void
   onClickPrev?: () => void
+  onClickHeader: () => void
 }
 
 export const Search: React.VFC<SearchPropType> = ({
   recipeInfo,
   searchValue,
+  isSearchResult,
   onChangeSearch,
   onClickSearch,
   onClickNext,
   onClickPrev,
+  onClickHeader,
 }) => {
   return (
     <Container>
-      <Header
-        headerText="fufufukakaka's Cookpad"
-        colorType="light"
-        textType="24bold"
-      />
+      <HeaderContainer onClick={onClickHeader}>
+        <Header
+          headerText="fufufukakaka's Cookpad"
+          colorType="light"
+          textType="24bold"
+        />
+      </HeaderContainer>
       <SearchBar
         value={searchValue}
         onChange={onChangeSearch}
         onClickSearch={onClickSearch}
       />
+      {isSearchResult ? (
+        <Typography text={`${searchValue}の検索結果`} type="14normal" />
+      ) : null}
       {recipeInfo.map((item) => (
         <>
           <Link href={`/recipes/${item.id}`}>
@@ -92,3 +101,5 @@ const ButtonContainer = styled.div({
 })
 
 const LinkContainer = styled.a({})
+
+const HeaderContainer = styled.div({})

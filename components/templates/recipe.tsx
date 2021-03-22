@@ -7,6 +7,7 @@ import { RecipeSummary } from '~/components/organisms/recipe-summary'
 import { IngredientContainer } from '~/components/organisms/ingredient-container'
 import { StepContainer } from '~/components/organisms/step-container'
 import { RecipeType } from '~/types/recipe'
+import Link from 'next/link'
 
 export type RecipePropType = {
   recipeInfo: RecipeType
@@ -23,11 +24,15 @@ export const Recipe: React.VFC<RecipePropType> = ({
 }) => {
   return (
     <Container>
-      <Header
-        headerText="fufufukakaka's Cookpad"
-        colorType="light"
-        textType="24bold"
-      />
+      <Link href={`/`}>
+        <LinkContainer>
+          <Header
+            headerText="fufufukakaka's Cookpad"
+            colorType="light"
+            textType="24bold"
+          />
+        </LinkContainer>
+      </Link>
       <SearchBar
         value={searchValue}
         onChange={onChangeSearch}
@@ -52,3 +57,5 @@ const Container = styled.div({
   flexWrap: 'wrap',
   backgroundColor: colors.background.primary,
 })
+
+const LinkContainer = styled.a({})
