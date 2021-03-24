@@ -1,9 +1,12 @@
 import { Story } from '@storybook/react'
-import { Search, SearchPropType } from '~/components/templates/search'
+import {
+  RecipeList,
+  RecipeListPropType,
+} from '~/components/templates/recipe-list'
 
 export default {
-  title: 'templates/Search',
-  component: Search,
+  title: 'templates/RecipeList',
+  component: RecipeList,
   argTypes: {
     onChangeSearch: { action: 'onChangeSearch' },
     onClickSearch: { action: 'onClickSearch' },
@@ -13,10 +16,10 @@ export default {
   },
 }
 
-const Template: Story<SearchPropType> = (args) => <Search {...args} />
+const Template: Story<RecipeListPropType> = (args) => <RecipeList {...args} />
 
 const args: Omit<
-  SearchPropType,
+  RecipeListPropType,
   | 'onChangeSearch'
   | 'onClickSearch'
   | 'onClickNext'

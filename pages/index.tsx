@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search } from '~/components/templates/search'
+import { RecipeList } from '~/components/templates/recipe-list'
 import { getRecipeList } from '~/lib/get_recipe_list'
 import { search } from '~/lib/search'
 import { RecipeType, PagingLinks } from '~/types/recipe'
@@ -67,14 +67,18 @@ const TopPage: NextPage = () => {
   if (recipeForList === null) return <div>loading...</div>
 
   return (
-    <Search
+    <RecipeList
       recipeInfo={recipeForList}
       searchValue={searchWord}
       isSearchResult={isSearchResult}
       onChangeSearch={(e) => handleOnChangeSearch(e)}
       onClickSearch={handleOnSearch}
-      onClickNext={handleOnClickNext}
-      onClickPrev={handleOnClickPrev}
+      onClickNext={
+        pagingLink && pagingLink.next ? handleOnClickNext : undefined
+      }
+      onClickPrev={
+        pagingLink && pagingLink.prev ? handleOnClickPrev : undefined
+      }
       onClickHeader={handleOnClickHeader}
     />
   )

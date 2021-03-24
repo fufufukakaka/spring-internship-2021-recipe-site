@@ -10,7 +10,7 @@ import { Typography } from '../atoms/typography'
 import { RecipeType } from '~/types/recipe'
 import Link from 'next/link'
 
-export type SearchPropType = {
+export type RecipeListPropType = {
   recipeInfo: RecipeType[]
   searchValue: string
   isSearchResult: boolean
@@ -21,7 +21,7 @@ export type SearchPropType = {
   onClickHeader: () => void
 }
 
-export const Search: React.VFC<SearchPropType> = ({
+export const RecipeList: React.VFC<RecipeListPropType> = ({
   recipeInfo,
   searchValue,
   isSearchResult,
