@@ -21,6 +21,7 @@ export const colors = {
   },
   background: {
     primary: '#FAFAF5',
+    alphaPrimary: '#fffffd',
     accent: '#F78700',
     dark: '#424031',
   },
