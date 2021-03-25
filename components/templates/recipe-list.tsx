@@ -10,10 +10,9 @@ import { Typography } from '../atoms/typography'
 import { RecipeType } from '~/types/recipe'
 import Link from 'next/link'
 
-export type SearchPropType = {
+export type RecipeListPropType = {
   recipeInfo: RecipeType[]
   searchValue: string
-  isSearchResult: boolean
   onChangeSearch: (text: string) => void
   onClickSearch: () => void
   onClickNext?: () => void
@@ -21,10 +20,9 @@ export type SearchPropType = {
   onClickHeader: () => void
 }
 
-export const Search: React.VFC<SearchPropType> = ({
+export const RecipeList: React.VFC<RecipeListPropType> = ({
   recipeInfo,
   searchValue,
-  isSearchResult,
   onChangeSearch,
   onClickSearch,
   onClickNext,
@@ -45,9 +43,6 @@ export const Search: React.VFC<SearchPropType> = ({
         onChange={onChangeSearch}
         onClickSearch={onClickSearch}
       />
-      {isSearchResult ? (
-        <Typography text={`${searchValue}の検索結果`} type="14normal" />
-      ) : null}
       {recipeInfo.map((item) => (
         <>
           <Link href={`/recipes/${item.id}`}>
