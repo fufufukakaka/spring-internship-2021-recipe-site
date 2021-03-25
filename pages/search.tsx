@@ -1,86 +1,46 @@
 import React from 'react'
 import { RecipeList } from '~/components/templates/recipe-list'
-import { search } from '~/lib/search'
-import Router from 'next/router'
 import { getRecipeList } from '~/lib/get_recipe_list'
 import { RecipeType, PagingLinks } from '~/types/recipe'
 import type { GetServerSideProps, NextPage } from 'next'
+import {
+  handleOnClickPaging,
+  handleOnChangeSearch,
+  handleOnSearch,
+  handleOnClickHeader,
+} from '~/lib/handler'
+import { useRecipeStatus } from '~/lib/hooks'
 
 export type SearchPagePropType = {
-  searchWord: string
+  paramSearchWord: string
   recipes: RecipeType[]
   pagingLink: PagingLinks
 }
 
 const SearchPage: NextPage<SearchPagePropType> = ({
-  searchWord,
+  paramSearchWord,
   recipes,
   pagingLink,
 }) => {
-  const [recipeForList, setRecipe] = React.useState<RecipeType[]>(recipes)
-  const [statePagingLink, setPagingLink] = React.useState<PagingLinks>(
-    pagingLink
-  )
-  const [stateSearchWord, setSearchWord] = React.useState<string>(searchWord)
-
-  React.useEffect(() => {
-    setRecipe(recipes)
-    setPagingLink(pagingLink)
-    setSearchWord(searchWord)
-  }, [searchWord])
-
-  const handleOnClickNext = async () => {
-    if (statePagingLink && statePagingLink.next) {
-      const response = await getRecipeList(statePagingLink.next)
-      setRecipe(response.recipes)
-      setPagingLink(response.links)
-      window.scrollTo(0, 0)
-    } else {
-      return null
-    }
-  }
-
-  const handleOnClickPrev = async () => {
-    if (statePagingLink && statePagingLink.prev) {
-      const response = await getRecipeList(statePagingLink.prev)
-      setRecipe(response.recipes)
-      setPagingLink(response.links)
-      window.scrollTo(0, 0)
-    } else {
-      return null
-    }
-  }
-
-  const handleOnChangeSearch = (value: string) => {
-    setSearchWord(value)
-  }
-
-  const handleOnSearch = async () => {
-    if (stateSearchWord !== '') {
-      Router.push(`/search?keyword=${encodeURIComponent(stateSearchWord)}`)
-    } else {
-      return null
-    }
-  }
-
-  const handleOnClickHeader = async () => {
-    Router.push('/')
-  }
+  const { searchWord, setSearchWord } = useRecipeStatus(paramSearchWord)
 
   if (recipes === null) return <div>loading...</div>
 
   return (
     <RecipeList
-      recipeInfo={recipeForList}
-      searchValue={stateSearchWord}
-      isSearchResult={true}
-      onChangeSearch={(e) => handleOnChangeSearch(e)}
-      onClickSearch={handleOnSearch}
+      recipeInfo={recipes}
+      searchValue={searchWord}
+      onChangeSearch={(e) => handleOnChangeSearch(e, setSearchWord)}
+      onClickSearch={() => handleOnSearch(searchWord)}
       onClickNext={
-        statePagingLink && statePagingLink.next ? handleOnClickNext : undefined
+        pagingLink && pagingLink.next
+          ? () => handleOnClickPaging(pagingLink.next)
+          : undefined
       }
       onClickPrev={
-        statePagingLink && statePagingLink.prev ? handleOnClickPrev : undefined
+        pagingLink && pagingLink.prev
+          ? () => handleOnClickPaging(pagingLink.prev)
+          : undefined
       }
       onClickHeader={handleOnClickHeader}
     />
@@ -89,18 +49,31 @@ const SearchPage: NextPage<SearchPagePropType> = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const searchWord = String(context.query.keyword)
-  if (!searchWord) {
-    return {
-      notFound: true,
-    }
+  const pageNumber = Number(context.query.page)
+  let requestUrl: string
+  if (searchWord && pageNumber && pageNumber >= 2) {
+    requestUrl = `https://internship-recipe-api.ckpd.co/search?keyword=${encodeURIComponent(
+      searchWord
+    )}&page=${pageNumber}`
+  } else if (searchWord && (!pageNumber || pageNumber < 2)) {
+    requestUrl = `https://internship-recipe-api.ckpd.co/search?keyword=${encodeURIComponent(
+      searchWord
+    )}`
   } else {
-    const response = await search(encodeURIComponent(searchWord))
+    requestUrl = `https://internship-recipe-api.ckpd.co/recipes`
+  }
+  if (requestUrl) {
+    const response = await getRecipeList(requestUrl)
     return {
       props: {
-        searchWord: searchWord,
+        paramSearchWord: searchWord,
         recipes: response.recipes,
         pagingLink: response.links,
       },
+    }
+  } else {
+    return {
+      notFound: true,
     }
   }
 }

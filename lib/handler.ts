@@ -5,9 +5,16 @@ export const handleOnClickPaging = async (url: string | undefined) => {
   if (url) {
     const urlParams = new URLSearchParams(url.split('?')[1])
     const pageNumber = Number(urlParams.get('page'))
-    pageNumber && pageNumber >= 2
-      ? Router.push(`/?page=${pageNumber}`)
-      : Router.push(`/`)
+    const searchWord = String(urlParams.get('keyword'))
+    if (searchWord && pageNumber && pageNumber >= 2) {
+      Router.push(`/search?keyword=${searchWord}&page=${pageNumber}`)
+    } else if (!searchWord && pageNumber) {
+      Router.push(`/?page=${pageNumber}`)
+    } else if (searchWord && !pageNumber) {
+      Router.push(`/search?keyword=${searchWord}`)
+    } else {
+      Router.push(`/`)
+    }
   } else {
     return null
   }

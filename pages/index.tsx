@@ -47,8 +47,13 @@ const TopPage: NextPage<TopPagePropType> = ({ recipes, pagingLink }) => {
 // pagingに伴うデータ取得をここで行う
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageNumber = Number(context.query.page)
+  let requestUrl: string
   if (isNaN(pageNumber)) {
-    const requestUrl = `https://internship-recipe-api.ckpd.co/recipes`
+    requestUrl = `https://internship-recipe-api.ckpd.co/recipes`
+  } else {
+    requestUrl = `https://internship-recipe-api.ckpd.co/recipes?page=${pageNumber}`
+  }
+  if (requestUrl) {
     const response = await getRecipeList(requestUrl)
     return {
       props: {
@@ -57,13 +62,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   } else {
-    const requestUrl = `https://internship-recipe-api.ckpd.co/recipes?page=${pageNumber}`
-    const response = await getRecipeList(requestUrl)
     return {
-      props: {
-        recipes: response.recipes,
-        pagingLink: response.links,
-      },
+      notFound: true,
     }
   }
 }
