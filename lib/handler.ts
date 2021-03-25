@@ -1,33 +1,13 @@
 import React from 'react'
 import Router from 'next/router'
-import { getRecipeList } from '~/lib/get_recipe_list'
-import { RecipeType, PagingLinks } from '~/types/recipe'
 
-export const handleOnClickNext = async (
-  pagingLink: PagingLinks,
-  setRecipe: React.Dispatch<React.SetStateAction<RecipeType[] | null>>,
-  setPagingLink: React.Dispatch<React.SetStateAction<PagingLinks | null>>
-) => {
-  if (pagingLink && pagingLink.next) {
-    const response = await getRecipeList(pagingLink.next)
-    setRecipe(response.recipes)
-    setPagingLink(response.links)
-    window.scrollTo(0, 0)
-  } else {
-    return null
-  }
-}
-
-export const handleOnClickPrev = async (
-  pagingLink: PagingLinks,
-  setRecipe: React.Dispatch<React.SetStateAction<RecipeType[] | null>>,
-  setPagingLink: React.Dispatch<React.SetStateAction<PagingLinks | null>>
-) => {
-  if (pagingLink && pagingLink.prev) {
-    const response = await getRecipeList(pagingLink.prev)
-    setRecipe(response.recipes)
-    setPagingLink(response.links)
-    window.scrollTo(0, 0)
+export const handleOnClickPaging = async (url: string | undefined) => {
+  if (url) {
+    const urlParams = new URLSearchParams(url.split('?')[1])
+    const pageNumber = Number(urlParams.get('page'))
+    pageNumber && pageNumber >= 2
+      ? Router.push(`/?page=${pageNumber}`)
+      : Router.push(`/`)
   } else {
     return null
   }

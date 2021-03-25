@@ -1,50 +1,71 @@
 import React from 'react'
 import { RecipeList } from '~/components/templates/recipe-list'
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import { useRecipeStatus } from '~/lib/hooks'
+import { RecipeType, PagingLinks } from '~/types/recipe'
 import {
-  handleOnClickNext,
-  handleOnClickPrev,
+  handleOnClickPaging,
   handleOnChangeSearch,
   handleOnSearch,
   handleOnClickHeader,
 } from '~/lib/handler'
+import { getRecipeList } from '~/lib/get_recipe_list'
 
-const TopPage: NextPage = () => {
-  const {
-    recipeForList,
-    pagingLink,
-    searchWord,
-    isSearchResult,
-    setRecipe,
-    setPagingLink,
-    setSearchWord,
-  } = useRecipeStatus()
+export type TopPagePropType = {
+  recipes: RecipeType[]
+  pagingLink: PagingLinks
+}
 
-  if (recipeForList === null) return <div>loading...</div>
+const TopPage: NextPage<TopPagePropType> = ({ recipes, pagingLink }) => {
+  const { searchWord, setSearchWord } = useRecipeStatus('')
+
+  if (recipes === null) return <div>loading...</div>
 
   return (
     <>
       <RecipeList
-        recipeInfo={recipeForList}
+        recipeInfo={recipes}
         searchValue={searchWord}
-        isSearchResult={isSearchResult}
         onChangeSearch={(e) => handleOnChangeSearch(e, setSearchWord)}
         onClickSearch={() => handleOnSearch(searchWord)}
         onClickNext={
           pagingLink && pagingLink.next
-            ? () => handleOnClickNext(pagingLink, setRecipe, setPagingLink)
+            ? () => handleOnClickPaging(pagingLink.next)
             : undefined
         }
         onClickPrev={
           pagingLink && pagingLink.prev
-            ? () => handleOnClickPrev(pagingLink, setRecipe, setPagingLink)
+            ? () => handleOnClickPaging(pagingLink.prev)
             : undefined
         }
         onClickHeader={handleOnClickHeader}
       />
     </>
   )
+}
+
+// pagingに伴うデータ取得をここで行う
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const pageNumber = Number(context.query.page)
+  if (isNaN(pageNumber)) {
+    const requestUrl = `https://internship-recipe-api.ckpd.co/recipes`
+    const response = await getRecipeList(requestUrl)
+    return {
+      props: {
+        recipes: response.recipes,
+        pagingLink: response.links,
+      },
+    }
+  } else {
+    const requestUrl = `https://internship-recipe-api.ckpd.co/recipes?page=${pageNumber}`
+    const response = await getRecipeList(requestUrl)
+    return {
+      props: {
+        recipes: response.recipes,
+        pagingLink: response.links,
+      },
+    }
+  }
 }
 
 export default TopPage

@@ -13,7 +13,6 @@ import Link from 'next/link'
 export type RecipeListPropType = {
   recipeInfo: RecipeType[]
   searchValue: string
-  isSearchResult: boolean
   onChangeSearch: (text: string) => void
   onClickSearch: () => void
   onClickNext?: () => void
@@ -24,7 +23,6 @@ export type RecipeListPropType = {
 export const RecipeList: React.VFC<RecipeListPropType> = ({
   recipeInfo,
   searchValue,
-  isSearchResult,
   onChangeSearch,
   onClickSearch,
   onClickNext,

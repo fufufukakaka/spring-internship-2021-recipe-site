@@ -65,7 +65,6 @@ const args: Omit<
     },
   ],
   searchValue: '',
-  isSearchResult: false,
 }
 
 export const Primary = Template.bind({})
