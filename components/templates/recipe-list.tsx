@@ -51,6 +51,7 @@ export const RecipeList: React.VFC<RecipeListPropType> = ({
                 key={item.id}
                 imgUrl={item.image_url}
                 recipeTitle={item.title}
+                author={item.author.user_name}
                 recipeDescription={item.description}
               />
             </LinkContainer>

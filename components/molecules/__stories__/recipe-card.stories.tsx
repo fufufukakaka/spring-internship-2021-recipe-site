@@ -16,6 +16,7 @@ const args: RecipeCardPropType = {
     'http://img.cpcdn.com/recipes/6690847/1280x720c/36926b27cabace7c00c57430c3588fc5.jpg',
   recipeTitle: 'お好み焼き',
   recipeDescription: '大好物です',
+  author: 'fufufukakaka',
 }
 
 export const Primary = Template.bind({})
