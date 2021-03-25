@@ -21,13 +21,13 @@ export const RecipeSummary: React.VFC<RecipeSummaryPropType> = ({
 }) => {
   return (
     <Container>
-      <div>
+      <ImgContainer>
         {imgUrl ? (
           <Image imgUrl={imgUrl} />
         ) : (
           <Icon type="noImage" height="100px" />
         )}
-      </div>
+      </ImgContainer>
       <div>
         <RecipeTitle>
           <Typography text={recipeTitle} type="24bold" />
@@ -55,6 +55,12 @@ const Container = styled.div({
   display: 'flex',
   flexDirection: 'column',
   flexWrap: 'wrap',
+})
+
+const ImgContainer = styled.div({
+  margin: '0 auto',
+  textAlign: 'center',
+  width: '90%',
 })
 
 const SubContainer = styled.div({
