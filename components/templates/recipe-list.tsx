@@ -45,9 +45,6 @@ export const RecipeList: React.VFC<RecipeListPropType> = ({
         onChange={onChangeSearch}
         onClickSearch={onClickSearch}
       />
-      {isSearchResult ? (
-        <Typography text={`${searchValue}の検索結果`} type="14normal" />
-      ) : null}
       {recipeInfo.map((item) => (
         <>
           <Link href={`/recipes/${item.id}`}>

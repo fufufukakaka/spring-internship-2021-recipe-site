@@ -8,9 +8,7 @@ export type RecipePagePropType = {
   recipe: RecipeType
 }
 
-const RecipePage: NextPage<RecipePagePropType> = (props) => {
-  const { recipe } = props
-
+const RecipePage: NextPage<RecipePagePropType> = ({ recipe }) => {
   if (recipe === null) return <div>loading...</div>
 
   return (
